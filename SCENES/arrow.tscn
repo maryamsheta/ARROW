@@ -1,0 +1,170 @@
+[gd_scene load_steps=9 format=3 uid="uid://ddvdu0vcvtjr0"]
+
+[ext_resource type="Script" path="res://SCRIPTS/arrow.gd" id="1_8vm3j"]
+[ext_resource type="Texture2D" uid="uid://bsvapl70kgpl1" path="res://ASSETS/BG.png" id="2_ujk2q"]
+[ext_resource type="FontFile" uid="uid://cq6u7hah73w05" path="res://ASSETS/RETROGRADE-BOLD.OTF" id="3_4ws6s"]
+[ext_resource type="Texture2D" uid="uid://dn3n2f4v41s1h" path="res://ASSETS/ARROW.png" id="4_56vp2"]
+[ext_resource type="Texture2D" uid="uid://dbb6uhr38o3pe" path="res://ASSETS/LIVE.png" id="5_u137n"]
+
+[sub_resource type="Animation" id="Animation_yc7oi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ARROW:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.636364, 0.636364)]
+}
+
+[sub_resource type="Animation" id="Animation_ajnyc"]
+resource_name = "scale"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ARROW:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.636364, 0.636364), Vector2(0.716, 0.716), Vector2(0.636364, 0.636364)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2e61a"]
+_data = {
+"RESET": SubResource("Animation_yc7oi"),
+"scale": SubResource("Animation_ajnyc")
+}
+
+[node name="QUICK!" type="Node2D"]
+script = ExtResource("1_8vm3j")
+
+[node name="CAMERA" type="Camera2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CAMERA"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -201.0
+offset_top = -277.0
+offset_right = 201.0
+offset_bottom = 277.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.929412, 1, 0.811765, 1)
+
+[node name="BG" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ujk2q")
+
+[node name="SCORE" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -179.0
+offset_right = 107.0
+offset_bottom = -159.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_4ws6s")
+bbcode_enabled = true
+text = "  SCORE: 0"
+
+[node name="TITLE" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = 145.0
+offset_right = 129.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_4ws6s")
+bbcode_enabled = true
+text = "[center]PRESS THE CORRECT ARROW TO GET THE HIGHEST SCORE
+[/center]"
+
+[node name="START" type="RichTextLabel" parent="."]
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = -69.0
+offset_right = 129.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_4ws6s")
+bbcode_enabled = true
+text = "[center]PRESS SPACE
+TO START
+[/center]"
+
+[node name="GAMEOVER" type="RichTextLabel" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -129.0
+offset_top = 96.0
+offset_right = 129.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_4ws6s")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]GAME OVER
+[/center]"
+
+[node name="ARROW" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -53)
+scale = Vector2(0.636364, 0.636364)
+texture = ExtResource("4_56vp2")
+
+[node name="LIVE1" type="Sprite2D" parent="."]
+position = Vector2(-63.96, 101.04)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("5_u137n")
+
+[node name="LIVE2" type="Sprite2D" parent="."]
+position = Vector2(0.0400077, 101.04)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("5_u137n")
+
+[node name="LIVE3" type="Sprite2D" parent="."]
+position = Vector2(64.04, 101.04)
+scale = Vector2(0.09, 0.09)
+texture = ExtResource("5_u137n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+active = false
+libraries = {
+"": SubResource("AnimationLibrary_2e61a")
+}
+autoplay = "scale"
+
+[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="."]
